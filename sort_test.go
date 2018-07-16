@@ -57,3 +57,29 @@ func minmax(x []int, i, j int) {
 		x[i], x[j] = x[j], x[i]
 	}
 }
+
+func TestNetworkSize(t *testing.T) {
+	{
+		// log₂ 8 = 3
+		const expected = 8*3*(3-1)/4 + 8 - 1
+		actual := 0
+		sortFunc(8, func(i, j int) {
+			actual++
+		})
+		if actual != expected {
+			t.Errorf("128-element array used %d operations, expected %d", actual, expected)
+		}
+	}
+
+	{
+		// log₂ 128 = 7
+		const expected = 128*7*(7-1)/4 + 128 - 1
+		actual := 0
+		sortFunc(128, func(i, j int) {
+			actual++
+		})
+		if actual != expected {
+			t.Errorf("128-element array used %d operations, expected %d", actual, expected)
+		}
+	}
+}
