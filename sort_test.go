@@ -35,14 +35,6 @@ func TestSortSlice(t *testing.T) {
 	}
 }
 
-func TestSortSliceLess(t *testing.T) {
-	x := rand.Perm(40)
-	SortSlice(x, func(i, j int) { minmax(x, i, j) })
-	if !sorted(x) {
-		t.Errorf("want sorted, got %v", x)
-	}
-}
-
 func sorted(x []int) bool {
 	for i := 0; i < len(x)-1; i++ {
 		if !(x[i] < x[i+1]) {

@@ -14,4 +14,5 @@ func SortSliceLess(slice interface{}, less func(i, j int) bool) {
 			swap(j, i)
 		}
 	}
+	sortFunc(v.Len(), minmax)
 }
